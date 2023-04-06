@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 #given
 RSpec.describe User, type: :model do
   context "when an user with invalid password" do 
