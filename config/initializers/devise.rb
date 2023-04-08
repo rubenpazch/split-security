@@ -14,7 +14,6 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = 'ee4ef5fda65874d631b652fb7ec25ac16ac1871715bc8a16831c5d076a0bb64e401c876dbe88a084ef393f08e9e3e50f7ae2e5de2f84ca0b089726154cee9e10'
 
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
@@ -126,7 +125,6 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 12
 
   # Set up a pepper to generate the hashed password.
-  # config.pepper = '7fc8f2faa0d2f61ae55b38af67facea08974307a950139c399272a9adb29fb12c0b7b13ab2b8655ca305f25babe78818b548fa82cc4998dd5f445009bcc3fc58'
 
   # Send a notification to the original email when the user's email is changed.
   # config.send_email_changed_notification = false
@@ -311,13 +309,13 @@ Devise.setup do |config|
   # changed. Defaults to true, so a user is signed in automatically after changing a password.
   # config.sign_in_after_change_password = true
   config.jwt do |jwt|
-    jwt.secret = ENV['DEVISE_JWT_SECRET_KEY']
+    jwt.secret = ENV.fetch('DEVISE_JWT_SECRET_KEY', nil)
     jwt.dispatch_requests = [
       ['POST', %r{^/sign_in$}]
     ]
     jwt.revocation_requests = [
       ['DELETE', %r{^/sign_out$}]
     ]
-    jwt.expiration_time = 15.day.to_i
+    jwt.expiration_time = 15.days.to_i
   end
 end

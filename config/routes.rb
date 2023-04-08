@@ -1,6 +1,7 @@
-Rails.application.routes.draw do
+# frozen_string_literal: true
 
-  devise_for :users, defaults: { format: :json}, controllers: {
+Rails.application.routes.draw do
+  devise_for :users, defaults: { format: :json }, controllers: {
     sessions: 'users/sessions',
     registrations: 'users/registrations'
   }
