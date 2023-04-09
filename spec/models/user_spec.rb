@@ -84,23 +84,23 @@ RSpec.describe User, type: :model do
       user_basic.validate
       expect(user_basic.errors.full_messages).to match_array(['Email is invalid'])
     end
-    it "email has symbols" do
+    it 'email has symbols' do
       user_basic.email = ',.com'
       user_basic.validate
       expect(user_basic.errors.full_messages).to match_array(['Email is invalid'])
     end
   end
-  context 'given an user with valid email' do 
+  context 'given an user with valid email' do
     let(:user_basic) { build(:user) }
-    it "email has the correct format" do
-      user_basic.email = "test@email.com"
+    it 'email has the correct format' do
+      user_basic.email = 'test@email.com'
       user_basic.validate
       expect(user_basic.errors.full_messages).to match_array([])
     end
   end
   context 'given an user with valid data' do
     let(:user_basic) { build(:user) }
-    it "can create a user" do
+    it 'can create a user' do
       user_basic.save
       expect(User.count).to equal(1)
     end
