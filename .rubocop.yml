@@ -5,6 +5,8 @@ Documentation:
 Metrics/BlockLength:
   Enabled: true
   AllowedMethods: ['describe', 'context']
+Metrics/ParameterLists:
+  Enabled: false
 Rails/FilePath:
   Enabled: false
 Gemspec/DeprecatedAttributeAssignment: # new in 1.30
