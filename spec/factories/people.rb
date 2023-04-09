@@ -7,5 +7,6 @@ FactoryBot.define do
     middle_name { Faker::Name.middle_name }
     last_name_a { Faker::Name.last_name }
     last_name_b { Faker::Name.last_name }
+    with_parents_names { false }
   end
 end
