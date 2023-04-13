@@ -13,10 +13,14 @@ class PersonValidator < ActiveModel::Validator
   end
 
   def include_numbers?(text_field)
+    return false if text_field.nil?
+
     text_field.match?(/[0-9]/)
   end
 
   def include_special_characters?(text_field)
+    return false if text_field.nil?
+
     text_field.match?(/\W/)
   end
 

@@ -17,6 +17,7 @@ class CreatesPerson
     @father_name = father_name
     @mother_name = mother_name
     @with_parents_names = with_parents_names
+    @success = false
   end
 
   def build
@@ -30,9 +31,13 @@ class CreatesPerson
     )
   end
 
+  def success?
+    @success
+  end
+
   def create
     build
-    project.save
+    @success = person.save
   end
 
   def generate_last_name
