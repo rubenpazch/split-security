@@ -261,7 +261,7 @@ Devise.setup do |config|
   # should add them to the navigational formats lists.
   #
   # The "*/*" below is required to match Internet Explorer requests.
-  # config.navigational_formats = ['*/*', :html, :turbo_stream]
+  config.navigational_formats = []
 
   # The default HTTP method used to sign out a resource. Default is :delete.
   config.sign_out_via = :delete
@@ -318,4 +318,8 @@ Devise.setup do |config|
     ]
     jwt.expiration_time = 15.days.to_i
   end
+
+  # config.include Devise::Test::ControllerHelpers, type: :controller
+  # config.include Devise::Test::IntegrationHelpers, type: :system
+  # config.include Devise::Test::IntegrationHelpers, type: :request
 end
