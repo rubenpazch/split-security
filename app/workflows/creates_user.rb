@@ -1,26 +1,28 @@
-class CreatesUser 
+# frozen_string_literal: true
+
+class CreatesUser
   attr_accessor :email, :password, :user
 
   def initialize(
     email: '',
     password: ''
-  ) 
+  )
     @email = email
     @password = password
   end
 
-  def build 
+  def build
     self.user = User.new(
       email:,
       password:
     )
   end
 
-  def success? 
+  def success?
     @success
   end
 
-  def create 
+  def create
     build
     @success = user.save
   end
