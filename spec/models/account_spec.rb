@@ -1,14 +1,11 @@
-require 'rails_helper'
-  RSpec.describe Account, type: :model do 
-    let(:account_test) {build(:accounts)}
+# frozen_string_literal: true
 
-    it 'name is empty' do
-    end
-    it 'has subaccounts' do 
-    end
-    it 'is root' do 
-    end
-    it 'has a domain' do 
-    end
-  end
+require 'rails_helper'
+RSpec.describe Account, type: :model do
+  # let(:account_test) {build(:accounts)}
+
+  it 'name is empty'
+  it 'has subaccounts'
+  it 'is root'
+  it 'has a domain'
 end

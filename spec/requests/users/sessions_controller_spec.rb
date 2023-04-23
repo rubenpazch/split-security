@@ -14,12 +14,12 @@ RSpec.describe Users::SessionsController, type: :controller do
       end
 
       it 'respond with created user' do
-        post :create, params: {user:{email: user_created.email, password: 'mypassword'}}, as: :json
+        post :create, params: { user: { email: user_created.email, password: 'mypassword' } }, as: :json
         expect(response).to have_http_status(:success)
       end
 
-      it 'respond with new user' do 
-        get :new, params: { user: {email: user_built.email, password: 'mypassword'}}, as: :json
+      it 'respond with new user' do
+        get :new, params: { user: { email: user_built.email, password: 'mypassword' } }, as: :json
         expect(response).to have_http_status(:success)
       end
     end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddUserToPerson < ActiveRecord::Migration[7.0]
   def change
     add_reference :people, :user, index: true
