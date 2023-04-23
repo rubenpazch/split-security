@@ -7,5 +7,5 @@ class User < ApplicationRecord
          :recoverable, :validatable,
          :jwt_authenticatable,
          jwt_revocation_strategy: JwtDenylist
-  has_one :person, class_name: 'Person', foreign_key: 'user_id'
+  has_one :person, class_name: 'Person', dependent: :destroy_async
 end
