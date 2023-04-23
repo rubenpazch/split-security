@@ -36,6 +36,9 @@ RSpec.describe CreatesUser do
     let(:user_test) {build(:user)}
     let(:person_test) {build(:people)}
 
+    it 'belongs to a person' do 
+      
+    end
   end
   
   
