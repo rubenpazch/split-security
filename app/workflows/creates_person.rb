@@ -4,7 +4,7 @@ class CreatesPerson
   attr_accessor :first_name, :middle_name, :last_name, :father_name, :mother_name, :with_parents_names, :person
 
   def initialize(
-    first_name: '',
+    user_id:, first_name: '',
     middle_name: '',
     last_name: '',
     father_name: '',
@@ -18,6 +18,7 @@ class CreatesPerson
     @mother_name = mother_name
     @with_parents_names = with_parents_names
     @success = false
+    @user_id = user_id
   end
 
   def build
@@ -27,7 +28,8 @@ class CreatesPerson
       middle_name:,
       father_name:,
       mother_name:,
-      with_parents_names:
+      with_parents_names:,
+      user_id:
     )
   end
 
