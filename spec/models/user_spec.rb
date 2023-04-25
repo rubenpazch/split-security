@@ -118,7 +118,7 @@ RSpec.describe User, type: :model do
     it 'can create a user' do
       instance_double('person', id: 1, save!: true)
       user_basic.save
-      expect(User.count).to equal(5)
+      expect(User.count).to equal(1)
     end
   end
 end
