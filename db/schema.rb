@@ -10,9 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_23_164620) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_27_040131) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "access_schemas", force: :cascade do |t|
+    t.integer "role_id"
+    t.integer "permission_id"
+    t.boolean "active"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["role_id", "permission_id"], name: "index_access_schemas_on_role_id_and_permission_id"
+  end
 
   create_table "jwt_denylist", force: :cascade do |t|
     t.string "jti", null: false
@@ -31,6 +40,20 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_23_164620) do
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.index ["user_id"], name: "index_people_on_user_id"
+  end
+
+  create_table "permissions", force: :cascade do |t|
+    t.string "name"
+    t.boolean "active", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "roles", force: :cascade do |t|
+    t.string "name"
+    t.boolean "is_super_admin"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
