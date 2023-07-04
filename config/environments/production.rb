@@ -109,7 +109,7 @@ Rails.application.configure do
 
   # Email
   config.action_mailer.default_url_options = {
-    host: 'split-security.herokuapp.com'
+    host: 'https://split-security-eedd2fe0a035.herokuapp.com'
   }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
