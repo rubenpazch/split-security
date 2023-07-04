@@ -115,7 +115,7 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     address: 'smtp.ipage.com',
     # domain: Rails.application.credentials.zoho[:domain],
-    port: 587,
+    port: 465,
     domain: 'ipage.com',
     user_name: ENV["IPAGE_USERNAME"],
     password: ENV["IPAGE_PASSWORD"],
