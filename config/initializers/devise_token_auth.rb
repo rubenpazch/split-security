@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# rubocop :disable Layout/LineLength
 DeviseTokenAuth.setup do |config|
   config.change_headers_on_each_request = Rails.env.production?
   config.token_cost = Rails.env.test? ? 4 : 10
@@ -18,3 +19,4 @@ DeviseTokenAuth.setup do |config|
   # this option if you want to make passwords updates to logout other devices.
   config.remove_tokens_after_password_reset = true
 end
+# rubocop :enable Layout/LineLength

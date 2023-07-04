@@ -15,8 +15,18 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 group :development, :test do
   gem 'debug', platforms: %i[mri mingw x64_mingw]
+  gem 'factory_bot_rails', '~> 6.2'
+  gem 'faker', '~> 3.2'
+  gem 'rspec-rails', '~> 6.0'
+  gem 'simplecov_json_formatter', '~> 0.1.4', require: false
 end
 
 group :development do
   gem 'letter_opener', '~> 1.8'
+end
+
+group :test do
+  gem 'database_cleaner-active_record', '~> 2.1'
+  gem 'shoulda-matchers', '~> 5.3'
+  gem 'simplecov', '~> 0.22.0', require: false
 end

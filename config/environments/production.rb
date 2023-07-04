@@ -117,10 +117,10 @@ Rails.application.configure do
     # domain: Rails.application.credentials.zoho[:domain],
     port: 587,
     domain: 'gmail.com',
-    user_name: ENV["GMAIL_USERNAME"],
-    password: ENV["GMAIL_PASSWORD"],
+    user_name: ENV.fetch('GMAIL_USERNAME', nil),
+    password: ENV.fetch('GMAIL_PASSWORD', nil),
     authentication: 'plain',
-    #ssl: true,
+    # ssl: true,
     # tls: true,
     enable_starttls_auto: true
   }
