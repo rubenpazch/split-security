@@ -113,12 +113,12 @@ Rails.application.configure do
   }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address: 'smtp.gmail.com',
+    address: 'smtp.ipage.com',
     # domain: Rails.application.credentials.zoho[:domain],
     port: 587,
-    domain: 'gmail.com',
-    user_name: Rails.application.credentials.gmail[:user_name].to_s,
-    password: Rails.application.credentials.gmail[:password],
+    domain: 'ipage.com',
+    user_name: Rails.application.credentials.ipage[:user_name].to_s,
+    password: Rails.application.credentials.ipage[:password],
     authentication: 'plain',
     # ssl: true,
     # tls: true,
