@@ -120,7 +120,7 @@ Rails.application.configure do
     user_name: ENV["IPAGE_USERNAME"],
     password: ENV["IPAGE_PASSWORD"],
     authentication: 'plain',
-    # ssl: true,
+    ssl: true,
     # tls: true,
     enable_starttls_auto: true
   }
