@@ -15,12 +15,12 @@ module Api
         #                   .page(current_page)
         #                   .per(per_page)
         @articles = Article.all
-        render json: @articles # , meta: meta_attributes(@articles), adapter: :json
+        render :index, status: :ok
       end
 
       # GET /articles/1
       def show
-        render json: @article
+        render :show, status: :ok
       end
 
       # POST /articles
@@ -51,8 +51,9 @@ module Api
 
       # Use callbacks to share common setup or constraints between actions.
       def set_article
-        # @article = current_api_user.articles.find(params[:id])
         @article = current_api_user.articles.find(params[:id])
+      rescue ActiveRecord::RecordNotFound => e
+        render json: { error: e.message }, status: :not_found
       end
 
       # Only allow a list of trusted parameters through.

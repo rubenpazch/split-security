@@ -235,7 +235,7 @@ DEPENDENCIES
   devise_token_auth (~> 1.2)
   factory_bot_rails (~> 6.2)
   faker (~> 3.2)
-  jbuilder
+  jbuilder (~> 2.11)
   letter_opener (~> 1.8)
   pg (~> 1.1)
   puma (~> 5.0)
