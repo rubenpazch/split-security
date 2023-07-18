@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_03_174525) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_18_230538) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -20,7 +20,29 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_03_174525) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
+    t.index ["title"], name: "index_articles_on_title", unique: true
     t.index ["user_id"], name: "index_articles_on_user_id"
+  end
+
+  create_table "menus", force: :cascade do |t|
+    t.string "title"
+    t.string "link_to"
+    t.boolean "has_sub_menu", default: false, null: false
+    t.boolean "is_root", default: false, null: false
+    t.integer "index_order"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "sub_menus", force: :cascade do |t|
+    t.string "title"
+    t.string "link_to"
+    t.boolean "has_sub_menu", default: false, null: false
+    t.integer "index_order"
+    t.bigint "menus_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["menus_id"], name: "index_sub_menus_on_menus_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -55,4 +77,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_03_174525) do
   end
 
   add_foreign_key "articles", "users"
+  add_foreign_key "sub_menus", "menus", column: "menus_id"
 end
