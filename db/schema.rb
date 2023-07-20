@@ -32,6 +32,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_18_230538) do
     t.integer "index_order"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["link_to"], name: "index_menus_on_link_to", unique: true
+    t.index ["title"], name: "index_menus_on_title", unique: true
   end
 
   create_table "sub_menus", force: :cascade do |t|

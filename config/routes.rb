@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     scope module: :v2,
           constraints: ApiConstraints.new(version: 2, default: true) do
       resources :articles
+      resources :menus
     end
   end
 end
