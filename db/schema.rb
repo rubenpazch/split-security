@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_18_230538) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_25_041333) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -36,6 +36,29 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_18_230538) do
     t.index ["title"], name: "index_menus_on_title", unique: true
   end
 
+  create_table "profiles", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "role_profiles", force: :cascade do |t|
+    t.bigint "role_id"
+    t.bigint "profile_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["profile_id"], name: "index_role_profiles_on_profile_id"
+    t.index ["role_id"], name: "index_role_profiles_on_role_id"
+  end
+
+  create_table "roles", force: :cascade do |t|
+    t.string "title"
+    t.boolean "is_root", default: false, null: false
+    t.integer "parent_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "sub_menus", force: :cascade do |t|
     t.string "title"
     t.string "link_to"
@@ -45,6 +68,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_18_230538) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["menus_id"], name: "index_sub_menus_on_menus_id"
+  end
+
+  create_table "user_profiles", force: :cascade do |t|
+    t.bigint "users_id"
+    t.bigint "profiles_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["profiles_id"], name: "index_user_profiles_on_profiles_id"
+    t.index ["users_id"], name: "index_user_profiles_on_users_id"
   end
 
   create_table "users", force: :cascade do |t|

@@ -13,4 +13,8 @@ RSpec.describe Menu, type: :model do
     it { should validate_presence_of(:link_to) }
     it { should validate_length_of(:link_to).is_at_least(3) }
   end
+
+  describe 'associations' do
+    it { should belongs_to(:users).dependent(:destroy) }
+  end
 end
