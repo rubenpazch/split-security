@@ -2,6 +2,6 @@
 
 class UserProfile < ApplicationRecord
   self.table_name = 'user_profiles'
-  belongs_to :users, class_name: 'User'
-  belongs_to :profiles, class_name: 'Profile'
+  belongs_to :user, class_name: 'User'
+  belongs_to :profile, class_name: 'Profile'
 end

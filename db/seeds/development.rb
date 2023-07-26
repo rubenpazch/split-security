@@ -37,3 +37,6 @@
 # RoleProfiles
 RoleProfile.create!(role_id: @role_super_admin.id, profile_id: @profile_director_one.id)
 RoleProfile.create!(role_id: @role_admin.id, profile_id: @profile_director_one.id)
+
+# UserProfile
+UserProfile.create!(user_id: @user_one.id, profile_id: @profile_director_one.id)
