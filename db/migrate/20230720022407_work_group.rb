@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-class Profile < ActiveRecord::Migration[7.0]
+class WorkGroup < ActiveRecord::Migration[7.0]
   def change
-    create_table :profiles do |t|
+    create_table :work_groups do |t|
       t.string :title
 
       t.timestamps

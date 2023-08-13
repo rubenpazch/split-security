@@ -2,8 +2,10 @@
 
 class Profile < ApplicationRecord
   self.table_name = 'profiles'
-  has_many :role_profiles, class_name: 'RoleProfile', dependent: :destroy
-  has_many :roles, through: :role_profiles
-  has_many :user_profiles, dependent: :destroy
-  has_many :users, through: :user_profiles
+  belongs_to :user, class_name: 'User'
+  belongs_to :work_group, class_name: 'WorkGroup'
+
+  def operation
+    raise NotImplementedError, "#{self.class} has not implemented method '#{__method__}'"
+  end
 end

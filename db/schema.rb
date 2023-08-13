@@ -37,9 +37,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_25_041333) do
   end
 
   create_table "profiles", force: :cascade do |t|
-    t.string "title"
+    t.bigint "user_id"
+    t.bigint "work_group_id"
+    t.boolean "is_active", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_profiles_on_user_id"
+    t.index ["work_group_id"], name: "index_profiles_on_work_group_id"
   end
 
   create_table "role_profiles", force: :cascade do |t|
@@ -68,15 +72,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_25_041333) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["menus_id"], name: "index_sub_menus_on_menus_id"
-  end
-
-  create_table "user_profiles", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "profile_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["profile_id"], name: "index_user_profiles_on_profile_id"
-    t.index ["user_id"], name: "index_user_profiles_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -108,6 +103,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_25_041333) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
+  end
+
+  create_table "work_groups", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_foreign_key "articles", "users"
