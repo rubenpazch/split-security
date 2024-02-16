@@ -1,11 +1,20 @@
 # frozen_string_literal: true
+#
+#
+#
+=begin
+ a profile might be : 
+  * administrator
+  * admin
+  * author
+  * regular_user 
+  * super_admin
+  * custom_profile
+=end
 
 class Profile < ApplicationRecord
   self.table_name = 'profiles'
   belongs_to :user, class_name: 'User'
   belongs_to :work_group, class_name: 'WorkGroup'
-
-  def operation
-    raise NotImplementedError, "#{self.class} has not implemented method '#{__method__}'"
-  end
+  belongs_to :access_permissions, class_name: 'AccessPermission'
 end
