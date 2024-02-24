@@ -25,7 +25,7 @@ FactoryBot.define do
       password_confirmation { nil }
     end
 
-    factory :user_with_password_empty do
+    factory :user_with_empty_password do
       email { Faker::Internet.email }
       name { nil }
       uid { email }
@@ -35,6 +35,22 @@ FactoryBot.define do
 
     factory :user_with_nil_name do
       email { Faker::Internet.email }
+      name { nil }
+      uid { email }
+      password { '12345678' }
+      password_confirmation { password }
+    end
+
+    factory :user_with_invalid_email do
+      email { '@emai.com' }
+      name { nil }
+      uid { email }
+      password { '12345678' }
+      password_confirmation { password }
+    end
+
+    factory :user_with_invalid_domain_email do
+      email { 'test@' }
       name { nil }
       uid { email }
       password { '12345678' }

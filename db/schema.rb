@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_25_041333) do
+ActiveRecord::Schema[7.0].define(version: 2024_02_24_012432) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -37,12 +37,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_25_041333) do
   end
 
   create_table "profiles", force: :cascade do |t|
-    t.bigint "user_id"
     t.bigint "work_group_id"
     t.boolean "is_active", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_profiles_on_user_id"
     t.index ["work_group_id"], name: "index_profiles_on_work_group_id"
   end
 
@@ -72,6 +70,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_25_041333) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["menus_id"], name: "index_sub_menus_on_menus_id"
+  end
+
+  create_table "user_profiles", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "profile_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["profile_id"], name: "index_user_profiles_on_profile_id"
+    t.index ["user_id"], name: "index_user_profiles_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -113,4 +120,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_25_041333) do
 
   add_foreign_key "articles", "users"
   add_foreign_key "sub_menus", "menus", column: "menus_id"
+  add_foreign_key "user_profiles", "profiles"
+  add_foreign_key "user_profiles", "users"
 end

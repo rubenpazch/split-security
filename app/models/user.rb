@@ -13,9 +13,9 @@ class User < ApplicationRecord
 
   include DeviseTokenAuth::Concerns::User
   before_validation :set_uid
-  has_many :articles, dependent: :destroy
-  has_many :profiles, class_name: 'Profile', dependent: :destroy
-  has_many :work_groups, through: :profiles, dependent: :destroy
+  # has_many :work_groups, through: :profiles, dependent: :destroy
+  has_many :user_profiles, dependent: :destroy
+  has_many :profiles, through: :user_profiles
 
   private
 
