@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_02_24_012432) do
+ActiveRecord::Schema[7.0].define(version: 2024_02_29_033537) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -39,8 +39,12 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_24_012432) do
   create_table "profiles", force: :cascade do |t|
     t.bigint "work_group_id"
     t.boolean "is_active", default: false, null: false
+    t.string "title", null: false
+    t.boolean "is_root", default: false, null: false
+    t.integer "parent_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["title"], name: "index_profiles_on_title", unique: true
     t.index ["work_group_id"], name: "index_profiles_on_work_group_id"
   end
 

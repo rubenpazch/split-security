@@ -18,7 +18,6 @@ FactoryBot.define do
     end
 
     factory :user_with_email_only do
-      email { Faker::Internet.email }
       name { nil }
       uid { email }
       password { nil }
@@ -26,7 +25,6 @@ FactoryBot.define do
     end
 
     factory :user_with_empty_password do
-      email { Faker::Internet.email }
       name { nil }
       uid { email }
       password { '' }
@@ -34,7 +32,6 @@ FactoryBot.define do
     end
 
     factory :user_with_nil_name do
-      email { Faker::Internet.email }
       name { nil }
       uid { email }
       password { '12345678' }

@@ -7,6 +7,6 @@
 #       * an administrator can update a user
 class AccessPermission < ApplicationRecord
   self.table_name = 'access_permissions'
-  has_many :permissions, class_name: 'Permission'
-  has_many :profiles, class_name: 'Profile'
+  # has_many :permissions, class_name: 'Permission'
+  # has_many :profiles, class_name: 'Profile'
 end
