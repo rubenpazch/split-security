@@ -15,7 +15,7 @@ module Api
         #                   .page(current_page)
         #                   .per(per_page)
         @articles = Article.all
-        render json: @articles # , meta: meta_attributes(@articles), adapter: :json
+        render :index, status: :ok
       end
 
       # GET /articles/1
