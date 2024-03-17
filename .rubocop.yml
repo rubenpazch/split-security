@@ -5,6 +5,8 @@ Documentation:
 Metrics/BlockLength:
   Enabled: true
   AllowedMethods: ['describe', 'context']
+  Exclude: 
+    - 'spec/**/*.rb'
 Metrics/ParameterLists:
   Enabled: false
 Rails/FilePath:
@@ -282,4 +284,44 @@ Rails/WhereMissing: # new in 2.16
 Rails/WhereNot: # new in 2.8
   Enabled: true
 Rails/WhereNotWithMultipleConditions: # new in 2.17
+  Enabled: true
+Lint/DuplicateMatchPattern: # new in 1.50
+  Enabled: true
+Lint/ItWithoutArgumentsInBlock: # new in 1.59
+  Enabled: true
+Lint/LiteralAssignmentInCondition: # new in 1.58
+  Enabled: true
+Lint/MixedCaseRange: # new in 1.53
+  Enabled: true
+Lint/RedundantRegexpQuantifiers: # new in 1.53
+  Enabled: true
+Style/ExactRegexpMatch: # new in 1.51
+  Enabled: true
+Style/RedundantArrayConstructor: # new in 1.52
+  Enabled: true
+Style/RedundantCurrentDirectoryInPath: # new in 1.53
+  Enabled: true
+Style/RedundantFilterChain: # new in 1.52
+  Enabled: true
+Style/RedundantRegexpArgument: # new in 1.53
+  Enabled: true
+Style/RedundantRegexpConstructor: # new in 1.52
+  Enabled: true
+Style/ReturnNilInPredicateMethodDefinition: # new in 1.53
+  Enabled: true
+Style/SingleLineDoEndBlock: # new in 1.57
+  Enabled: true
+Style/SuperWithArgsParentheses: # new in 1.58
+  Enabled: true
+Style/YAMLFileRead: # new in 1.53
+  Enabled: true
+Rails/DangerousColumnNames: # new in 2.21
+  Enabled: true
+Rails/EnvLocal: # new in 2.22
+  Enabled: true
+Rails/RedundantActiveRecordAllMethod: # new in 2.21
+  Enabled: true
+Rails/SelectMap: # new in 2.21
+  Enabled: true
+Rails/UnusedRenderContent: # new in 2.21
   Enabled: true

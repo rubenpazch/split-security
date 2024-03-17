@@ -12,61 +12,63 @@
 # SubMenu.create(title: 'overview', link_to: '/accounts/overview', has_sub_menu: false, menus_id: m1.id, index_order: 0)
 # SubMenu.create(title: 'settings', link_to: '/accounts/settings', has_sub_menu: false, menus_id: m1.id, index_order: 1)
 
-@user_director_one = User.create!(email: 'director1@email.com', password: '12345678')
-@user_subdirector_one = User.create!(email: 'subdirector1@email.com', password: '12345678')
-@user_support = User.create!(email: 'support@email.com', password: '12345678')
-@user_teacher = User.create!(email: 'teacher@email.com', password: '12345678')
-@user_student = User.create!(email: 'student@email.com', password: '12345678')
-@user_visitor = User.create!(email: 'visitor@email.com', password: '12345678')
+# @user_director_one = User.create!(email: 'director1@email.com', password: '12345678')
+# @user_subdirector_one = User.create!(email: 'subdirector1@email.com', password: '12345678')
+# @user_support = User.create!(email: 'support@email.com', password: '12345678')
+# @user_teacher = User.create!(email: 'teacher@email.com', password: '12345678')
+# @user_student = User.create!(email: 'student@email.com', password: '12345678')
+# @user_visitor = User.create!(email: 'visitor@email.com', password: '12345678')
 
-@user_director_two = User.create!(email: 'director2@email.com', password: '12345678')
-@user_subdirector_two = User.create!(email: 'subdirector2@email.com', password: '12345678')
-@user_areamanager = User.create!(email: 'areamanager@email.com', password: '12345678')
-@user_operador = User.create!(email: 'operador@email.com', password: '12345678')
+# @user_director_two = User.create!(email: 'director2@email.com', password: '12345678')
+# @user_subdirector_two = User.create!(email: 'subdirector2@email.com', password: '12345678')
+# @user_areamanager = User.create!(email: 'areamanager@email.com', password: '12345678')
+# @user_operador = User.create!(email: 'operador@email.com', password: '12345678')
+# User.create!(email: 'test@email.com', password: '123456789', password_confirmation: '123456789')
 
 # -----------------------
 # workgroup if a school
 # -----------------------
 
 # workgroups
-@workgroup_director_one = WorkGroup.create!(title: 'Director 1')
-@workgroup_sub_director_one = WorkGroup.create!(title: 'Sub Director 1')
-@workgroup_support_one = WorkGroup.create!(title: 'Support 1')
-@workgroup_teacher = WorkGroup.create!(title: 'Teacher 1')
-@workgroup_student = WorkGroup.create!(title: 'Student 1')
-@workgroup_visitor = WorkGroup.create!(title: 'Visitor 1')
+# @workgroup_director_one = WorkGroup.create!(title: 'Director 1')
+# @workgroup_sub_director_one = WorkGroup.create!(title: 'Sub Director 1')
+# @workgroup_support_one = WorkGroup.create!(title: 'Support 1')
+# @workgroup_teacher = WorkGroup.create!(title: 'Teacher 1')
+# @workgroup_student = WorkGroup.create!(title: 'Student 1')
+# @workgroup_visitor = WorkGroup.create!(title: 'Visitor 1')
 
 # profile
-@profile_user_director_one = Profile.new(is_active: false)
-@profile_user_director_one.user = @user_director_one
-@profile_user_director_one.work_group = @workgroup_director_one
-@profile_user_director_one.save!
-
-@profile_user_director_one = Profile.new(is_active: true)
-@profile_user_director_one.user = @user_director_one
-@profile_user_director_one.work_group = @workgroup_sub_director_one
-@profile_user_director_one.save!
-
-# profile
-@profile_user_subdirector_one = Profile.new(is_active: true)
-@profile_user_subdirector_one.user = @user_subdirector_one
-@profile_user_subdirector_one.work_group = @workgroup_sub_director_one
-@profile_user_subdirector_one.save!
+# @profile_user_director_one = Profile.new(is_active: false)
+# @profile_user_director_one.user = @user_director_one
+# @profile_user_director_one.work_group = @workgroup_director_one
+# @profile_user_director_one.save!
+# Profile.create!(is_active: true, work_group_id: 1)
+#
+# @profile_user_director_one = Profile.new(is_active: true)
+# @profile_user_director_one.user = @user_director_one
+# @profile_user_director_one.work_group = @workgroup_sub_director_one
+# @profile_user_director_one.save!
 
 # profile
-@profile_user_support = Profile.new(is_active: true)
-@profile_user_support.user = @user_support
-@profile_user_support.work_group = @workgroup_support_one
-@profile_user_support.save!
+# @profile_user_subdirector_one = Profile.new(is_active: true)
+# @profile_user_subdirector_one.user = @user_subdirector_one
+# @profile_user_subdirector_one.work_group = @workgroup_sub_director_one
+# @profile_user_subdirector_one.save!
+
+# profile
+# @profile_user_support = Profile.new(is_active: true)
+# @profile_user_support.user = @user_support
+# @profile_user_support.work_group = @workgroup_support_one
+# @profile_user_support.save!
 
 # -----------------------
 # workgroup if a hospital
 # -----------------------
 
-@workgroup_director_two = WorkGroup.create!(title: 'Director 2')
-@workgroup_sub_director_two = WorkGroup.create!(title: 'Sub Director 2')
-@workgroup_manager_area = WorkGroup.create!(title: 'Area Manager')
-@workgroup_operator = WorkGroup.create!(title: 'Operator')
+# @workgroup_director_two = WorkGroup.create!(title: 'Director 2')
+# @workgroup_sub_director_two = WorkGroup.create!(title: 'Sub Director 2')
+# @workgroup_manager_area = WorkGroup.create!(title: 'Area Manager')
+# @workgroup_operator = WorkGroup.create!(title: 'Operator')
 
 # CreateRoles
 # @role_super_admin = Role.create!(title: 'SuperAdministrator', is_root: true, parent_id: 0)
