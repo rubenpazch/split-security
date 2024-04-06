@@ -14,7 +14,7 @@ class WorkGroup < ApplicationRecord
   # has_many :role_profiles, class_name: 'RoleProfile', dependent: :destroy
   # has_many :roles, through: :role_profiles
   has_many :profiles, class_name: 'Profile', dependent: :destroy
-  has_many :users, through: :profiles, dependent: :destroy
+  # has_many :users, through: :profiles, dependent: :destroy
 
   validates :title, presence: true
 end
