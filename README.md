@@ -22,3 +22,8 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+* To access the psql console options
+sudo -u postgres psql template1
+or  
+sudo -u postgres psql
