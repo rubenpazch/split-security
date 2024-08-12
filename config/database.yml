@@ -17,18 +17,18 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  username: <%= ENV['DB_USERNAME'] %>
-  password: <%= ENV['DB_PASSWORD'] %>
-  port: <%= ENV['DB_PORT'] %>
-  host: <%= ENV['DB_HOST'] %>
-  database: <%= ENV['DB_NAME'] %>
+  # username: <%= ENV['DB_USERNAME'] %>
+  # password: <%= ENV['DB_PASSWORD'] %>
+  # port: <%= ENV['DB_PORT'] %>
+  # host: <%= ENV['DB_HOST'] %>
+  # database: <%= ENV['DB_NAME'] %>
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 development:
   <<: *default
-#  database: split_security_development
+  database: split_security_development
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -62,7 +62,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-#  database: split_security_test
+  database: split_security_test
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -86,6 +86,6 @@ test:
 #
 production:
   <<: *default
-#  database: split_security_production
-#  username: split_security
-#  password: <%= ENV["SPLIT_SECURITY_DATABASE_PASSWORD"] %>
+  database: split_security_production
+  username: split_security
+  password: <%= ENV["SPLIT_SECURITY_DATABASE_PASSWORD"] %>

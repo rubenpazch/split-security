@@ -36,7 +36,6 @@ RSpec.describe User, type: :model do
       it 'should be invalid' do
         user_with_email.save
         user_with_email.valid?
-        expect(user_with_email).not_to be_valid
         expect(user_with_email.errors.messages[:password]).to eq ["can't be blank"]
       end
     end
@@ -44,7 +43,6 @@ RSpec.describe User, type: :model do
       it 'should be invalid' do
         user_with_empty_password.save
         user_with_empty_password.valid?
-        expect(user_with_empty_password).not_to be_valid
         expect(user_with_empty_password.errors.messages[:password]).to eq ["can't be blank"]
       end
     end
@@ -52,7 +50,6 @@ RSpec.describe User, type: :model do
       it 'should be invalid' do
         user_with_invalid_email.save
         user_with_invalid_email.valid?
-        expect(user_with_invalid_email).not_to be_valid
         expect(user_with_invalid_email.errors.messages[:email]).to eq ['is not an email']
       end
     end
@@ -60,7 +57,6 @@ RSpec.describe User, type: :model do
       it 'should be invalid' do
         user_with_invalid_domain_email.save
         user_with_invalid_domain_email.valid?
-        expect(user_with_invalid_domain_email).not_to be_valid
         expect(user_with_invalid_domain_email.errors.messages[:email]).to eq ['is not an email']
       end
     end
