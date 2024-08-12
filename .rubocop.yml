@@ -1,4 +1,8 @@
-require: rubocop-rails
+require: 
+  - rubocop-rspec_rails
+  - rubocop-rspec
+  - rubocop-factory_bot
+  - rubocop-rails
 
 Documentation:
   Enabled: false
