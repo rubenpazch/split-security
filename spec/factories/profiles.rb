@@ -14,6 +14,14 @@ FactoryBot.define do
 
     factory :root_profile_with_parent_id do
       parent_id { 1 }
+      is_active { true }
+      is_root { true }
+    end
+
+    factory :root_profile_without_parent_id do
+      parent_id { nil }
+      is_active { true }
+      is_root { true }
     end
 
     factory :valid_child_profile do

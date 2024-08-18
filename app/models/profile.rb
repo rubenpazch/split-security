@@ -14,11 +14,10 @@
 class Profile < ApplicationRecord
   self.table_name = 'profiles'
   include ActiveModel::Validations
-  # belongs_to :user, class_name: 'User'
+
   belongs_to :work_group, class_name: 'WorkGroup'
-  has_many :user_profiles, dependent: :destroy
-  has_many :users, through: :user_profiles, dependent: :destroy
-  # belongs_to :access_permissions, class_name: 'AccessPermission'
+  has_many :user_profiles, class_name: 'UserProfile'
+  has_many :users, through: :user_profiles, class_name: 'User'
 
   validates :title, presence: true, uniqueness: true
   validates_with ProfileValidator
@@ -27,15 +26,11 @@ class Profile < ApplicationRecord
     is_active
   end
 
-  def root?
-    is_root
+  def is_root?
+    is_root && parent_id.nil?
   end
 
-  def parent?
-    self[:parent_id] != nil
-  end
-
-  def parent
-    Profile.find(self[:parent_id]) if parent?
+  def is_child?
+    !is_root && parent_id.present?
   end
 end
