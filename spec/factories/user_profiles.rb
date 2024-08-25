@@ -17,6 +17,6 @@ FactoryBot.define do
     transient { profile { create(:root_profile_without_parent_id) } }
 
     transient { user1 { create(:valid_user) } }
-    transient { user2 { create(:valid_user_2) } }
+    transient { user2 { create(:valid_user_two) } }
   end
 end

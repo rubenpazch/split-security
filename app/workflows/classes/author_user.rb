@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Classes
   class AuthorUser < Abstracts::AuthorUser
     def build

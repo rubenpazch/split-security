@@ -8,7 +8,7 @@ RSpec.describe UserProfile, type: :model do
   let(:it_admin) { build :user_profile }
 
   describe 'given a root profile' do
-    context 'and user is valid' do
+    context 'when user is valid' do
       it 'accesses profile title from user' do
         basic_user_profile.valid?
         basic_user_profile.save!

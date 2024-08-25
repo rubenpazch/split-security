@@ -16,7 +16,7 @@ class Profile < ApplicationRecord
   include ActiveModel::Validations
 
   belongs_to :work_group, class_name: 'WorkGroup'
-  has_many :user_profiles, class_name: 'UserProfile'
+  has_many :user_profiles, class_name: 'UserProfile', dependent: :destroy
   has_many :users, through: :user_profiles, class_name: 'User'
 
   validates :title, presence: true, uniqueness: true
@@ -26,11 +26,11 @@ class Profile < ApplicationRecord
     is_active
   end
 
-  def is_root?
+  def root?
     is_root && parent_id.nil?
   end
 
-  def is_child?
+  def child?
     !is_root && parent_id.present?
   end
 end

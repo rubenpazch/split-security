@@ -21,7 +21,7 @@ class User < ApplicationRecord
     (?=.*[[:^alnum:]])
   /x
 
-  has_many :user_profiles, class_name: 'UserProfile'
+  has_many :user_profiles, class_name: 'UserProfile', dependent: :destroy
   has_many :profiles, through: :user_profiles, class_name: 'Profile'
 
   validates :email, presence: true

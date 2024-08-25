@@ -89,7 +89,7 @@ FactoryBot.define do
       password_confirmation { password }
     end
 
-    factory :valid_user_2 do
+    factory :valid_user_two do
       name { 'ramon' }
       uid { email }
       password { '12345678aA.' }
