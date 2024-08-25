@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe User, type: :model do
+RSpec.describe User do
   describe 'associations' do
     # it { is_expected.to have_many(:work_groups).dependent(:destroy) }
     it { is_expected.to have_many(:profiles) }
@@ -17,16 +17,21 @@ RSpec.describe User, type: :model do
     context 'with before_validation' do
       it 'setses uid as email' do
         user = described_class.new attributes_for :user_without_uid
-        user.save
+        user.valid?
         expect(user.uid).to eq(user.email)
+      end
+
+      it 'does not set uid as email' do
+        user = described_class.new attributes_for :user_without_uid
+        expect(user.uid).to be_empty
       end
     end
   end
 
   describe 'new user is created' do
     context 'when user email is invalid' do
-      let(:user_with_empty_email_address) { build :user_with_empty_email_address }
-      let(:user_with_invalid_domain_email) { build :user_with_invalid_domain_email }
+      let(:user_with_empty_email_address) { build(:user_with_empty_email_address) }
+      let(:user_with_invalid_domain_email) { build(:user_with_invalid_domain_email) }
 
       it 'is empty email address' do
         user_with_empty_email_address.save
@@ -42,7 +47,7 @@ RSpec.describe User, type: :model do
     end
 
     context 'when user email is valid' do
-      let(:user_with_email) { build :user_with_email_only }
+      let(:user_with_email) { build(:user_with_email_only) }
 
       it 'is a valid email' do
         user_with_email.save
@@ -52,9 +57,9 @@ RSpec.describe User, type: :model do
     end
 
     context 'when user password is invalid' do
-      let(:user_with_empty_password) { build :user_with_empty_password }
-      let(:user_with_short_password) { build :user_with_short_password }
-      let(:user_with_long_password) { build :user_with_long_password }
+      let(:user_with_empty_password) { build(:user_with_empty_password) }
+      let(:user_with_short_password) { build(:user_with_short_password) }
+      let(:user_with_long_password) { build(:user_with_long_password) }
 
       it 'is blank password' do
         user_with_empty_password.save
@@ -77,8 +82,8 @@ RSpec.describe User, type: :model do
     end
 
     context 'when user password is weak' do
-      let(:user_password_without_number) { build :user_password_without_number }
-      let(:user_password_without_lowercase_letter) { build :user_password_without_lowercase_letter }
+      let(:user_password_without_number) { build(:user_password_without_number) }
+      let(:user_password_without_lowercase_letter) { build(:user_password_without_lowercase_letter) }
 
       it 'number not preset' do
         user_password_without_number.save
@@ -98,7 +103,7 @@ RSpec.describe User, type: :model do
     end
 
     context 'when user is valid' do
-      let(:user_with_nil_name) { build :user_with_nil_name }
+      let(:user_with_nil_name) { build(:user_with_nil_name) }
 
       it 'is nil name' do
         user_with_nil_name.save

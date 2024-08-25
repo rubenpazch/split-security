@@ -2,10 +2,10 @@
 
 require 'rails_helper'
 
-RSpec.describe UserProfile, type: :model do
-  subject(:basic_user_profile) { build :user_profile }
+RSpec.describe UserProfile do
+  subject(:basic_user_profile) { build(:user_profile) }
 
-  let(:it_admin) { build :user_profile }
+  let(:it_admin) { build(:user_profile) }
 
   describe 'given a root profile' do
     context 'when user is valid' do
