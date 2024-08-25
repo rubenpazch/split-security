@@ -88,6 +88,13 @@ FactoryBot.define do
       password { '12345678aA.' }
       password_confirmation { password }
     end
+
+    factory :valid_user_2 do
+      name { 'ramon' }
+      uid { email }
+      password { '12345678aA.' }
+      password_confirmation { password }
+    end
   end
 end
 # rubocop: enable Metrics/BlockLength
