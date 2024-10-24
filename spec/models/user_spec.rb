@@ -39,7 +39,7 @@ RSpec.describe User do
         expect(user_with_empty_email_address.errors[:email]).to eq ['is not an email', 'is invalid']
       end
 
-      it 'is not a domain' do
+      it 'is not a valid domain' do
         user_with_invalid_domain_email.save
         user_with_invalid_domain_email.valid?
         expect(user_with_invalid_domain_email.errors[:email]).to eq ['is not an email', 'is invalid']
@@ -47,12 +47,12 @@ RSpec.describe User do
     end
 
     context 'when user email is valid' do
-      let(:user_with_email) { build(:user_with_email_only) }
+      let(:user_with_valid_email) { build(:user) }
 
       it 'is a valid email' do
-        user_with_email.save
-        user_with_email.valid?
-        expect(user_with_email.errors[:email]).to eq []
+        user_with_valid_email.save
+        user_with_valid_email.valid?
+        expect(user_with_valid_email.errors[:email]).to eq []
       end
     end
 
@@ -105,7 +105,7 @@ RSpec.describe User do
     context 'when user is valid' do
       let(:user_with_nil_name) { build(:user_with_nil_name) }
 
-      it 'is nil name' do
+      it 'name can be nil' do
         user_with_nil_name.save
         user_with_nil_name.valid?
         expect(user_with_nil_name).to be_valid

@@ -15,7 +15,6 @@ RSpec.describe Profile do
       let(:valid_profile) { build(:profile) }
 
       it 'is valid' do
-        valid_profile.save
         expect(valid_profile).to be_valid
       end
     end
@@ -24,7 +23,7 @@ RSpec.describe Profile do
       let(:profile_nil_title) { build(:profile_with_nil_title) }
 
       it "displays title can't be blank" do
-        profile_nil_title.save
+        profile_nil_title.valid?
         expect(profile_nil_title.errors.messages[:title]).to eq ["can't be blank"]
       end
     end
@@ -33,7 +32,7 @@ RSpec.describe Profile do
       let(:profile_empty_title) { build(:profile_with_empty_title) }
 
       it "displays title can't be blank" do
-        profile_empty_title.save
+        profile_empty_title.valid?
         expect(profile_empty_title.errors.messages[:title]).to eq ["can't be blank"]
       end
     end
@@ -42,7 +41,6 @@ RSpec.describe Profile do
       let(:is_active_profile) { build(:is_active_profile) }
 
       it 'and it is active' do
-        is_active_profile.save
         expect(is_active_profile).to be_active
       end
     end
@@ -51,12 +49,10 @@ RSpec.describe Profile do
       let(:root_profile) { build(:is_root_profile) }
 
       it 'and it is root' do
-        root_profile.save
         expect(root_profile.root?).to be true
       end
 
       it 'and it not child' do
-        root_profile.save
         expect(root_profile.child?).to be false
       end
     end
@@ -64,12 +60,12 @@ RSpec.describe Profile do
     context 'when child profile' do
       let(:child_profile) { build(:valid_child_profile) }
 
-      it 'and it not child' do
-        root_profile.save
-        expect(root_profile.child?).to be true
+      it 'is valid child' do
+        child_profile.save
+        expect(child_profile.child?).to be true
       end
 
-      it 'and it not root' do
+      it 'and it is not root' do
         child_profile.valid?
         expect(child_profile.root?).to be false
       end

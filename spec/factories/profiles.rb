@@ -18,6 +18,7 @@ FactoryBot.define do
 
     factory :valid_child_profile do
       parent_id { 1 }
+      is_active { true }
     end
 
     factory :is_root_profile do
