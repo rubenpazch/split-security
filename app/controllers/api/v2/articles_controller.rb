@@ -38,7 +38,7 @@ module Api
         if @article.update(article_params)
           render json: @article
         else
-          render json: @article.errors, status: :unprocessable_entity
+          render json: @article.errors, status: :not_found
         end
       end
 

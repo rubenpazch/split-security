@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     scope module: :v1,
           constraints: ApiConstraints.new(version: 1, default: false) do
       resources :articles
+      resources :profiles, only: %i[create update index show destroy edit new]
     end
 
     scope module: :v2,

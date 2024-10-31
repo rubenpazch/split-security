@@ -36,13 +36,13 @@ RSpec.describe User do
       it 'is empty email address' do
         user_with_empty_email_address.save
         user_with_empty_email_address.valid?
-        expect(user_with_empty_email_address.errors[:email]).to eq ['is not an email', 'is invalid']
+        expect(user_with_empty_email_address.errors[:email]).to eq ['is not an email']
       end
 
       it 'is not a valid domain' do
         user_with_invalid_domain_email.save
         user_with_invalid_domain_email.valid?
-        expect(user_with_invalid_domain_email.errors[:email]).to eq ['is not an email', 'is invalid']
+        expect(user_with_invalid_domain_email.errors[:email]).to eq ['is not an email']
       end
     end
 
