@@ -13,8 +13,23 @@ class User < ApplicationRecord
 
   include DeviseTokenAuth::Concerns::User
   before_validation :set_uid
-  has_many :user_profiles, dependent: :destroy
-  has_many :profiles, through: :user_profiles
+
+  PASSWORD_REQUIREMENTS = /\A
+    (?=.{8,})
+    (?=.*\d)
+    (?=.*[a-z])
+    (?=.*[A-Z])
+    (?=.*[[:^alnum:]])
+  /x
+
+  has_many :user_profiles, class_name: 'UserProfile', dependent: :destroy
+  has_many :profiles, through: :user_profiles, class_name: 'Profile'
+  has_many :articles, through: :articles, class_name: 'Article'
+
+  validates :email, presence: true
+  validates :password,
+            format: { with: PASSWORD_REQUIREMENTS,
+                      message: I18n.t(:message_strong_password) }
 
   private
 

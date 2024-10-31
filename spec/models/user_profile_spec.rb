@@ -2,24 +2,56 @@
 
 require 'rails_helper'
 
-RSpec.describe UserProfile, type: :model do
-  subject(:user_with_root_profile) { build :user_profile }
+RSpec.describe UserProfile do
+  subject(:basic_user_profile) { create(:user_profile) }
 
-  let(:it_admin) { build :user_profile }
+  describe 'given a profile' do
+    context 'when user is valid' do
+      it 'accesses profile title from user' do
+        basic_user_profile.valid?
+        basic_user_profile.save!
+        expect(User.last.profiles.first.title).to eq 'default'
+      end
 
-  context 'when create a use profile' do
-    describe 'valid data' do
-      it 'is success' do
-        it_admin.valid?
-        expect(it_admin).to be_valid
+      it 'accesses user nane from profile' do
+        basic_user_profile.valid?
+        basic_user_profile.save!
+        expect(Profile.last.users.first.name).to eq 'pedro'
       end
     end
 
-    describe 'when user with root profile' do
-      it 'is valid' do
-        user_with_root_profile.valid?
-        expect(user_with_root_profile).to be_valid
+    context 'when profile has many users' do
+      let!(:user_one) { create(:valid_user) }
+      let!(:user_two) { create(:valid_user) }
+      let!(:profile) { create(:profile) }
+
+      before do
+        described_class.create!(user_id: user_one.id, profile_id: profile.id)
+        described_class.create!(user_id: user_two.id, profile_id: profile.id)
+      end
+
+      it 'count two users' do
+        expect(described_class.count).to eq 2
+      end
+
+      it 'prints two users for profile' do
+        expect(profile.users.count).to eq 2
+      end
+
+      it 'prints a profile for user' do
+        expect(user_one.profiles[0]).to eq profile
       end
     end
   end
 end
+
+# admin
+# it_support
+# carlos
+# pedro
+# it_admin
+# support
+# it_support
+# it_helpdesk
+# visitor
+# basic_user
