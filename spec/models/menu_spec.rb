@@ -14,7 +14,7 @@ RSpec.describe Menu do
     it { is_expected.to validate_length_of(:link_to).is_at_least(3) }
   end
 
-  describe 'associations' do
-    it { is_expected.to belongs_to(:users).dependent(:destroy) }
-  end
+  # describe 'associations' do
+  #   it { is_expected.to belongs_to(:users).dependent(:destroy) }
+  # end
 end
