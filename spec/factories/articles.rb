@@ -4,7 +4,8 @@ FactoryBot.define do
   factory :article do
     title { Faker::Lorem.sentence }
     body { Faker::Lorem.paragraph(sentence_count: 10) }
-    user
+    transient { user { create(:valid_user) } }
+    user_id { user.id }
 
     factory :invalid_article do
       title { nil }

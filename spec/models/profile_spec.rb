@@ -10,7 +10,7 @@ RSpec.describe Profile do
     it { is_expected.to validate_uniqueness_of(:title) }
   end
 
-  describe '#profile is build' do
+  describe '#build' do
     context 'when title is present' do
       let(:valid_profile) { build(:profile) }
 
@@ -68,6 +68,27 @@ RSpec.describe Profile do
       it 'and it is not root' do
         child_profile.valid?
         expect(child_profile.root?).to be false
+      end
+    end
+  end
+
+  describe '#create' do
+    context 'when title is present' do
+      let(:valid_profile) { create(:profile) }
+
+      it 'is valid' do
+        expect { valid_profile }.to change(described_class, :count).by(1)
+      end
+    end
+  end
+
+  describe '#delete' do
+    context 'when profile is present' do
+      let(:valid_profile) { create(:profile) }
+
+      it 'is removed' do
+        valid_profile.destroy
+        expect { valid_profile }.not_to change(described_class, :count)
       end
     end
   end
