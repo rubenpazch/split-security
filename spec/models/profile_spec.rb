@@ -88,7 +88,7 @@ RSpec.describe Profile do
 
       it 'is removed' do
         valid_profile.destroy
-        expect { valid_profile }.to change(described_class, :count).by(0)
+        expect { valid_profile }.not_to change(described_class, :count)
       end
     end
   end

@@ -27,7 +27,10 @@ class User < ApplicationRecord
   has_many :articles, through: :articles, class_name: 'Article'
 
   validates :email, presence: true
-  
+  validates :password,
+            format: { with: PASSWORD_REQUIREMENTS,
+                      message: I18n.t(:message_strong_password) }
+
   private
 
   def set_uid
